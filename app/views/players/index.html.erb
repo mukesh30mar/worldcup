@@ -1,21 +1,27 @@
 <h1>Listing players</h1>
 
 <table>
-  <tr>
-  	<th>Player Name</th>
-    <th>Player Type</th>
-    <th></th>
-  </tr>
+	<tr>
+		<th>Player Name</th>
+		<th>Player Type</th>
+		<th>Status</th>
+		<th></th>
+	</tr>
 
-<% @players.each do |player| %>
-  <tr>
+	<% @players.each do |player| %>
+	<tr>
 		<td><%= player.email%></td>
-		 <td><%= player.type%></td>
-    <td><%= link_to 'Show', player_path(player) %></td>
-    <td><%= link_to 'Edit', edit_player_path(player) %></td>
-    <td><%= link_to 'Destroy', player_path(player), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+		<td><%= player.type%></td>
+		<td><%= player.status %></td>
+		<td>
+
+			<%= check_box_tag "status" %>
+		</div></td>
+		<td><%= link_to 'Show', player_path(player) %></td>
+		<td><%= link_to 'Edit', edit_player_path(player) %></td>
+		<td><%= link_to 'Destroy', player_path(player), :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

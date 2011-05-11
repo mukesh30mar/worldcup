@@ -17,12 +17,11 @@
 	</div>
 	<div class="field"> 
 		<%= f.label :type %>
-	 <%= f.select :type, Player::PLAYER_TYPES, :prompt => 'Select a Player Type' %>
+		<%= f.select :type, Player::PLAYER_TYPES, :prompt => 'Select a Player Type' %>
 	</div>
-
-
-
-
-
-  	<%= f.submit %> 
-<% end %>
+	<div class="field"> 
+		<%#= f.label :status %>
+		<%#= f.check_box :status %>
+	</div>
+	<%= f.submit  %> 
+	<% end %>

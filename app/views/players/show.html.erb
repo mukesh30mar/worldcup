@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-<span><b>Email:</b></span>
-<span><%= @player.email %></span>
+	<span><b>Email:</b></span>
+	<span><%= @player.email %></span>
 </p>
-<p><span><b>Type:</b></span>
-<span><%= @player.type %></span></p>
+<p>
+	<span><b>Type:</b></span>
+	<span><%= @player.type %></span>
+</p>
 
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>

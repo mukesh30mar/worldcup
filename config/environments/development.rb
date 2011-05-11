@@ -29,8 +29,8 @@ Worldcup::Application.configure do
     :port     => 587,
     :domain   => "localhost@localdomain",
     :authentication => "plain",    
-    :user_name => "mukesh.sumit20@gmail.com",
-    :password => "123smartmukesh", 
+    :user_name => "sweetboy.demo9",
+    :password => "mukeshbatra", 
     :enable_starttls_auto => true
 
 

@@ -1,0 +1,3 @@
+class WicketKeeper < Player
+
+end

@@ -1,0 +1,2 @@
+class ShowbowlerController < ApplicationController
+end

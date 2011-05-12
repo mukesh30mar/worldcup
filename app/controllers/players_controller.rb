@@ -84,5 +84,19 @@ class PlayersController < ApplicationController
 
   end
   
+  def batsmen
+    @players = Batsman.all
+    render 'players'
+  end
+
+  def bowlers
+    @players = Bowler.all(:include => [:coach])
+    render 'players'
+  end
+
+  def wicketkeepers
+    @players = WicketKeeper.all
+    render 'players'
+  end
   
 end

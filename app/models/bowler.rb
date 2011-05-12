@@ -1,0 +1,2 @@
+class Bowler < Player
+end

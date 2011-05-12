@@ -60,16 +60,3 @@ class Player < ActiveRecord::Base
 end
 
 
-class Batsman < Player
-
-end
-
-class Bowler < Player
-
-
-end
-
-class WicketKeeper < Player
-
-
-end

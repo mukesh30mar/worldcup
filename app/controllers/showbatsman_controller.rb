@@ -1,0 +1,2 @@
+class ShowbatsmanController < ApplicationController
+end

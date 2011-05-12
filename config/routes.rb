@@ -4,7 +4,10 @@ Worldcup::Application.routes.draw do
 
   resources :players do
    collection do
-   put 'activate'
+     put 'activate'
+     get 'bowlers'
+     get 'batsmen'
+     get 'wicketkeepers'
    end
   end
 

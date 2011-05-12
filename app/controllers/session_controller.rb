@@ -20,7 +20,7 @@ class SessionController < ApplicationController
 
   def destroy
     session[:coach_id] = nil
-    redirect_to coaches_path, :alert => "Logged out"
+    redirect_to session_new_path, :alert => "Logged out"
   end
 
 end

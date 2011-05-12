@@ -34,6 +34,29 @@ class Player < ActiveRecord::Base
       return false
     end
   end
+
+  def self.activate(hash={})
+    b=0
+    w=0
+    bat=0
+    a = Array.new
+    hash["status"].collect do |k,v|
+      if v[:status] =="1"
+        a.push(k)
+      end
+    end
+    b= Player.count(:conditions => {:type => "Bowler" , :id => a})
+    bat= Player.count(:conditions => {:type => "Batsman" , :id => a})
+    w= Player.count(:conditions => {:type => "WicketKeeper" , :id => a})
+    p "bowler #{b}"
+    p "wicketKeeper #{w}"
+    p "Batsman #{bat}" 
+    if b < 3 || bat < 5 || w< 1 || (b+bat+w) >11
+      return false
+    else
+      return true
+    end  
+  end
 end
 
 

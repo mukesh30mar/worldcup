@@ -1,0 +1,5 @@
+class TeamlistingController < ApplicationController
+  
+   
+  
+end

@@ -2,7 +2,11 @@ Worldcup::Application.routes.draw do
   
   
 
-  resources :players
+  resources :players do
+   collection do
+   put 'activate'
+   end
+  end
 
   resources :coaches do
     member do

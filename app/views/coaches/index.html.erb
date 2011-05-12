@@ -1,25 +1,28 @@
-<h1>Listing coaches</h1>
+<h1>Listing Teams of WorlCup</h1>
 <%if flash[:alert]%>
-	<%= flash[:alert]%>
-	<%end%>
-	<table>
-		<tr>
-			<th>Player Name</th>
-			<th>Player Type</th>
-			<th></th>
-		</tr>
-		<%= link_to(url_for(@coach))%>
-		<%= link_to(url_for(:action => 'index', :controller => 'coaches', :only_path => false, :protocol => 'https') )%>	
-		<% @coaches.each do |coach| %>
-		<tr>
+<%= flash[:alert]%>
+<%end%>
+<table>
+	<tr>
+		<th>Team Name</th>
+		<th></th>
+		<th></th>
+	</tr>
 
-			<td><%= link_to 'Show', coach %></td>
-			<td><%= link_to 'Edit', edit_coach_path(coach) %></td>
-			<td><%= link_to 'Destroy', coach, :confirm => 'Are you sure?', :method => :delete %></td>
-		</tr>
-		<% end %>
-	</table>
+	<%  @allteams.each do |team| %>
 
-	<br />
+	<tr>
+		<td><%= team.team_name%></td>
+		<%if team.activated_at.blank?%>
+		<td>InActive</td>
+		<%else%>
+		<td class= "green">Active</td>
+		<%end%>
+	</tr>
 
-	<%= link_to 'New Coach', new_coach_path %>
+	<% end %>
+</table>
+
+<br />
+
+

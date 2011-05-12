@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
   def index
-    @coaches = Coach.all
+      @allteams =  Coach.all(:select => "team_name,activated_at")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @coaches }
@@ -35,7 +35,7 @@ class CoachesController < ApplicationController
     respond_to do |format|
       if  @coach.save
         Accountactivation.sendlink(@coach,request.host_with_port).deliver
-        format.html { redirect_to(@coach, :notice => 'Coach was successfully created. and check your mail for activate your account') }
+        format.html { redirect_to(@login_path, :alert => 'Coach was successfully created. and check your mail for activate your account') }
         format.xml  { render :xml => @coach, :status => :created, :location => @coach }
       else
         format.html { render :action => "new" }

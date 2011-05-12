@@ -1,4 +1,12 @@
+<% if @totalteammember < 11 %>
+    <p> Team Can't be Play Because atleast maximum team player should b 15 but not more than 15 and 11 team player must b active for playing game </p>
+ <% else %>
+     <p>Team Satisfy all conditions of selection process so it can play game</p>
+
+<%end%>
+<%=flash[:notice]%>
 <h1>Listing players</h1>
+	<%= form_tag(activate_players_path) do %>
 
 <table>
 	<tr>
@@ -9,21 +17,24 @@
 	</tr>
 
 	<% @players.each do |player| %>
+	 <%= fields_for "status[]", player do |statusfiled| %>
+
 	<tr>
+		
 		<td><%= player.email%></td>
 		<td><%= player.type%></td>
 		<td><%= player.status %></td>
-		<td>
-
-			<%= check_box_tag "status" %>
-		</div></td>
-		<td><%= link_to 'Show', player_path(player) %></td>
-		<td><%= link_to 'Edit', edit_player_path(player) %></td>
-		<td><%= link_to 'Destroy', player_path(player), :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= statusfiled.check_box :status %></td>
+		<%#= check_box_tag "status", player.status, player.status  %>
 	</tr>
+		   <% end %>	
 	<% end %>
 </table>
+<br/>
+<%= submit_tag "Change Status"%>
 
 <br />
+<% end %>
 
 <%= link_to 'New Player', new_player_path %>
+<%= link_to 'View Team Name', coaches_path%>

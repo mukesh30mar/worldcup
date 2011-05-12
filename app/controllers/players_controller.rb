@@ -1,8 +1,9 @@
 class PlayersController < ApplicationController
-
+ 
   before_filter :authorize
   def index
     @players = Player.all(:conditions => {:coach_id => coach_id})
+    @totalteammember = Player.count(:conditions => {:coach_id => coach_id, :status => 1})
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @players }
@@ -69,4 +70,19 @@ class PlayersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  def activate
+    if Player.activate(params)
+       Player.update(params[:status].keys, params[:status].values)
+      flash[:notice] = 'Selected Players are active now.'
+      redirect_to :action => "index"
+    else
+      flash[:notice] = 'Selected Players cannot be made active. Please select alteast 3 bowler, 5 batsmr and 1 wicketkeeper'
+      redirect_to :action => "index"
+    end
+
+  end
+  
+  
 end

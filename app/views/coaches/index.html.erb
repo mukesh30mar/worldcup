@@ -1,28 +1,27 @@
 <h1>Listing Teams of WorlCup</h1>
 <%if flash[:alert]%>
-<%= flash[:alert]%>
-<%end%>
-<table>
-	<tr>
-		<th>Team Name</th>
-		<th></th>
-		<th></th>
-	</tr>
+	<%= flash[:alert]%>
+	<%end%>
+	<table>
+		<tr>
+			<th>Team Name</th>
+			<th></th>
+			<th></th>
+		</tr>
 
-	<%  @allteams.each do |team| %>
+		<%  @allteams.each do |team| %>
 
-	<tr>
-		<td><%= team.team_name%></td>
-		<%if team.activated_at.blank?%>
-		<td>InActive</td>
-		<%else%>
-		<td class= "green">Active</td>
-		<%end%>
-	</tr>
+		<tr>
+			<td><%= team.team_name%></td>
+			<%if team.activated_at.blank?%>
+			<td>InActive</td>
+			<%else%>
+			<td class= "green">Active</td>
+			<%end%>
+		</tr>
+		<% end %>
+	</table>
 
-	<% end %>
-</table>
-
-<br />
+	<br />
 
 

@@ -1,7 +1,15 @@
 <h1>Listing <%= @players.first[:type].pluralize %></h1>
-<ul>
-<% @players.each do |player| %>
-<li><%= player.email %> - <%= player.coach.team_name %></li>
-<% end %>
-</ul>
+<table>
+	<tr>
+		<th>Player Name </th>
+		<th>Team Name</th>
+
+	</tr>
+	<% @players.each do |player| %>
+
+	<tr>
+		<td><%= player.email %></td>
+		<td> <%= player.coach.team_name %></td>
+		<% end %>
+	</table>
 

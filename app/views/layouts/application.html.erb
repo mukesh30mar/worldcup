@@ -7,14 +7,25 @@
 	<%= csrf_meta_tag %>
 </head>
 <body>
+	<% if session[:coach_id] %>
+	<span>
+		<%= link_to "Batsmen", batsmen_players_path  %>
+	</span>|
+	<span>
+		<%= link_to "WicketKeepers", wicketkeepers_players_path %>
+	</span>
+	|<span>
+		<%= link_to "Bowlers", bowlers_players_path %>
+	</span>
+	<span>
+		|<%=link_to "My Team", players_path %> 
+	</span>|
+	<span>
+		<%= link_to "Logout",logout_path,:method => :delete%>
+	</span>
+	<% end %>
 
-<%= yield %>
-<div>
-	<% if session[:coach_id]%>
-	<br/>
+	<%= yield %>
 
-	<%= button_to "Logout",logout_path,:method => :delete%>
-	<%end%>
-</div>
 </body>
 </html>

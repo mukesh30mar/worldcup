@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
- 
+
   before_filter :authorize
   def index
     @players = Player.all(:conditions => {:coach_id => coach_id})
@@ -31,20 +31,20 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
-
   def create
     coach = coach_id 
     @player = Player.new(params[:player].merge(:coach_id => coach_id))
     @player.type=params[:player][:type]
+   
     respond_to do |format|
-      if @player.save
-        format.html { redirect_to(@player, :notice => 'Player was successfully created.') }
-        format.xml  { render :xml => @player, :status => :created, :location => @player }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
-      end
-    end
+            if @player.save
+              format.html { redirect_to(@player, :notice => 'Player was successfully created.') }
+              format.xml  { render :xml => @player, :status => :created, :location => @player }
+            else
+              format.html { render :action => "new" }
+              format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
+            end
+          end
   end
 
 
@@ -70,11 +70,11 @@ class PlayersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  
+
+
   def activate
     if Player.activate(params)
-       Player.update(params[:status].keys, params[:status].values)
+      Player.update(params[:status].keys, params[:status].values)
       flash[:notice] = 'Selected Players are active now.'
       redirect_to :action => "index"
     else
@@ -83,9 +83,9 @@ class PlayersController < ApplicationController
     end
 
   end
-  
+
   def batsmen
-    @players = Batsman.all
+    @players = Batsman.all(:include => [:coach])
     render 'players'
   end
 
@@ -95,8 +95,8 @@ class PlayersController < ApplicationController
   end
 
   def wicketkeepers
-    @players = WicketKeeper.all
+    @players = WicketKeeper.all(:include => [:coach])
     render 'players'
   end
-  
+
 end
